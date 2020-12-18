@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "wbBvpK2zHcli8B7MCK6HenPxRuvu13CeP4Hfk5OqnNoqvUxDzOXUvPZRcfEAVKyNsC2Bhech7jvCCmHR2JiHDw==",
+  "success": true,
+  "projectFilePath": "D:\\Respaldo\\ASP.NET\\PracticasDesarrollo\\MapeoTareaPracticas\\MapeoTareaPracticas.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MSI-\\.nuget\\packages\\documentformat.openxml\\2.11.3\\documentformat.openxml.2.11.3.nupkg.sha512",
+    "C:\\Users\\MSI-\\.nuget\\packages\\documentformat.openxml.stw\\2.5.5631\\documentformat.openxml.stw.2.5.5631.nupkg.sha512",
+    "C:\\Users\\MSI-\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\MSI-\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\MSI-\\.nuget\\packages\\spreadsheetlight\\3.5.0\\spreadsheetlight.3.5.0.nupkg.sha512",
+    "C:\\Users\\MSI-\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512",
+    "C:\\Users\\MSI-\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"DocumentFormat.OpenXml.STW 2.5.5631\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "libraryId": "DocumentFormat.OpenXml.STW",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
+}
