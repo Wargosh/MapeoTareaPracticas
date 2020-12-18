@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "EIEqhD2GN/BXT0vhoEhU6QQUdAyE9yoQS123dt50liJ6x8cxwYeupeOx1PLXGFGJjtnRnC8NgVUhzNfgyJqe7A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\joseg\\Desktop\\practicas\\AsignacionMapeo\\MapeoTareaPracticas.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\joseg\\.nuget\\packages\\documentformat.openxml\\2.12.0\\documentformat.openxml.2.12.0.nupkg.sha512",
+    "C:\\Users\\joseg\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\joseg\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\joseg\\.nuget\\packages\\spreadsheetlight\\3.5.0\\spreadsheetlight.3.5.0.nupkg.sha512",
+    "C:\\Users\\joseg\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512",
+    "C:\\Users\\joseg\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

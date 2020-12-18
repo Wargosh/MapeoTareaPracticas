@@ -6,18 +6,22 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using SpreadsheetLight;
 using MapeoTareaPracticas.Models;
+using System.IO;
 
 namespace MapeoTareaPracticas
 {
     class Program
     {
-        public static string ruta = @"D:\Respaldo\ASP.NET\MapeoTareaPracticas\";
+        public static string ruta = @"C:\Users\joseg\Desktop\";
+
         public static List<Object[]> list = new List<Object[]>();
+
+        public static List<Object[]> listCSV = new List<Object[]>();
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            GetExcelFile();
-            //ReadXML();
+            
+            //GetExcelFile();
+            leerCSV();
             
         }
 
@@ -33,7 +37,7 @@ namespace MapeoTareaPracticas
             List<int> camposValidos = new List<int>();
             for (int i = 0; i < 10; i++)
             {
-                // almacena la posicion del campo que es valido de acuerso al esquema XML
+                // almacena la posicion del campo que es valido de acuerdo al esquema XML
                 if (!string.IsNullOrEmpty(Mapeo(sl.GetCellValueAsString(1, i + 1)))) { 
                     camposValidos.Add(i);
                     Console.Write(Mapeo(sl.GetCellValueAsString(1, i + 1)) + ", ");
@@ -67,9 +71,9 @@ namespace MapeoTareaPracticas
             {
                 foreach (var i in camposValidos)
                 {
-                    if (!string.IsNullOrEmpty((string)list[x][i]))
+                    if (!string.IsNullOrEmpty((string)listCSV[x][i]))
                     {
-                        Console.Write(list[x][i] + ", ");
+                        Console.Write(listCSV[x][i] + ", ");
                     }
                     else
                     {
@@ -83,8 +87,7 @@ namespace MapeoTareaPracticas
         public static string Mapeo(string nameCol)
         {
             //aqui cargamos el documento con XDocument
-            XDocument documento = XDocument.Load(ruta + "schema.xml");
-
+            XDocument documento = XDocument.Load(ruta+"schema.xml");
             //            desde nombre //en de donde //descendants el nombre de la etiqueta //selecciona cual
             var esquema = from sche in documento.Descendants("Schema") select sche;  //ahora en esta variable tenemos todo el esquema
             //obtenemos el valor almacenado en la etiqueta document del esquema, la primera o default porque siempre llegara una
@@ -108,28 +111,40 @@ namespace MapeoTareaPracticas
 
         }
 
-        public static void ReadXML()
+        public static void leerCSV()
         {
-            //aqui cargamos el documento con XDocument
-            XDocument documento = XDocument.Load(ruta + "schema.xml");
+            
+            string documentoCSV = File.ReadAllText(ruta+"Ejemplo.csv");
 
-            //            desde nombre //en de donde //descendants el nombre de la etiqueta //selecciona cual
-            var esquema = from sche in documento.Descendants("Schema") select sche;  //ahora en esta variable tenemos todo el esquema
-            //obtenemos el valor almacenado en la etiqueta document del esquema, la primera o default porque siempre llegara una
-            string doctype = esquema.Elements("document").FirstOrDefault().Value;
-            Console.WriteLine(doctype);
-            //obtenemos el valor almacenado en la etiqueta user del esquema
-            string userid = esquema.Elements("user").FirstOrDefault().Value;
-            Console.WriteLine(userid);
+            documentoCSV = documentoCSV.Replace('\n', '\r');
+            string[] tuplas = documentoCSV.Split(new char[] { '\r' },
+                StringSplitOptions.RemoveEmptyEntries);
 
-            var columnas = from colu in documento.Descendants("columns") select colu;  //ahora en esta variable tenemos todas las columas
-            //cada elemento dentro del esquema es un XElement, recorremos con foreach para obtener el documento
+            int Numrows = tuplas.Length - 1;
 
-            foreach (XElement elemento in columnas.Elements("column"))
+            string[] headers = tuplas[0].Split(",");
+            List<string[]> celdas_tupla = new List<string[]>();
+            for (int i = 0; i < headers.Length; i++)
             {
-                Console.WriteLine(elemento.Element("to").Value);
+                // almacena la posicion del campo que es valido de acuerdo al esquema XML
+                if (!string.IsNullOrEmpty(Mapeo(headers[i])))
+                {
+                    Console.Write(Mapeo(headers[i]) + " , ");
+                }
+            }
+            for (int i =1 ; i < tuplas.Length; i++)
+            {
+                string[] celdas = tuplas[i].Split(",");
+                celdas_tupla.Add(celdas);
+            }
 
-                Console.WriteLine(elemento.Element("from").Value);
+            foreach (var c in celdas_tupla)
+            {
+                for (int i = 0; i < c.Length; i++)
+                {
+                    Console.WriteLine(c[i]);
+                }
+                
             }
         }
     }
