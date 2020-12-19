@@ -269,19 +269,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MSI-\\.nuget\\packages\\": {}
+    "C:\\Users\\joseg\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Respaldo\\ASP.NET\\PracticasDesarrollo\\MapeoTareaPracticas\\MapeoTareaPracticas.csproj",
+      "projectUniqueName": "C:\\Users\\joseg\\Desktop\\practicas\\MapeoPracticas\\MapeoTareaPracticas.csproj",
       "projectName": "MapeoTareaPracticas",
-      "projectPath": "D:\\Respaldo\\ASP.NET\\PracticasDesarrollo\\MapeoTareaPracticas\\MapeoTareaPracticas.csproj",
-      "packagesPath": "C:\\Users\\MSI-\\.nuget\\packages\\",
-      "outputPath": "D:\\Respaldo\\ASP.NET\\PracticasDesarrollo\\MapeoTareaPracticas\\obj\\",
+      "projectPath": "C:\\Users\\joseg\\Desktop\\practicas\\MapeoPracticas\\MapeoTareaPracticas.csproj",
+      "packagesPath": "C:\\Users\\joseg\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\joseg\\Desktop\\practicas\\MapeoPracticas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\MSI-\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\joseg\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
