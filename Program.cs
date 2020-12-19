@@ -6,131 +6,183 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using SpreadsheetLight;
 using MapeoTareaPracticas.Models;
+using System.IO;
 
 namespace MapeoTareaPracticas
 {
     class Program
     {
-        public static string ruta = @"D:\Respaldo\ASP.NET\MapeoTareaPracticas\";
+        public static string ruta = @"D:\Respaldo\ASP.NET\PracticasDesarrollo\MapeoTareaPracticas\";
+
         public static List<Object[]> list = new List<Object[]>();
+
+        //public static List<Object[]> listCSV = new List<Object[]>();
+
+        public static List<int> camposValidos = new List<int>();
+
+        // contiene info del esquema recibido
+        public static Schema schema = new Schema();
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            GetExcelFile();
-            //ReadXML();
-            
+            // primero obtener la info del XML
+            ReadXML();
+
+            Console.WriteLine("******************* Lectura del archivo .XLSX *******************");
+            ReadExcelFile();
+
+            Console.WriteLine("******************* Lectura del archivo .CSV *******************");
+            ReadCSV();
         }
 
-        public static void GetExcelFile()
+        public static void ReadExcelFile()
         {
+            list.Clear();
+
             //Ruta del fichero Excel
             string filePath = ruta + "Ejemplo.xlsx";
 
             SLDocument sl = new SLDocument(filePath);
 
-            int fileRow = 1; // fila desde donde empieza [Excel toma encuenta desde 1]
+            // almacenar en una lista solo los campos que sean validos de acuerdo al esquema XML
+            GetValidFields_Excel(sl);
 
-            List<int> camposValidos = new List<int>();
-            for (int i = 0; i < 10; i++)
-            {
-                // almacena la posicion del campo que es valido de acuerso al esquema XML
-                if (!string.IsNullOrEmpty(Mapeo(sl.GetCellValueAsString(1, i + 1)))) { 
-                    camposValidos.Add(i);
-                    Console.Write(Mapeo(sl.GetCellValueAsString(1, i + 1)) + ", ");
-                }
-            }
             Console.WriteLine("");
 
-            fileRow = 2; // empezar a leer desde la segunda fila
+            // Mapear los datos a una lista de objetos
+            int fileRow = 1; // fila desde donde empieza [Excel toma encuenta desde 1]
             while (!string.IsNullOrEmpty(sl.GetCellValueAsString(fileRow, 1)))
             {
                 Object[] o = new Object[10];
-                // leer datos de excel
-                Objeto obj = new Objeto();
                 foreach (var i in camposValidos)
                 {
-                    if (!string.IsNullOrEmpty(Mapeo(sl.GetCellValueAsString(1, i + 1))))
-                    {
-                        o[i] = sl.GetCellValueAsString(fileRow, i + 1);
-                    }
-
-                    
+                   o[i] = sl.GetCellValueAsString(fileRow, i + 1);
                 }
 
                 list.Add(o);
-
                 fileRow++; 
             }
 
-            // presentar contenido del archivo siguiendo el esquema
-            for (int x = 0; x < list.Count; x++)
-            {
-                foreach (var i in camposValidos)
-                {
-                    if (!string.IsNullOrEmpty((string)list[x][i]))
-                    {
-                        Console.Write(list[x][i] + ", ");
-                    }
-                    else
-                    {
-                        Console.Write(", ");
-                    }
-                }
-                Console.WriteLine("");
-            }
-        }
-
-        public static string Mapeo(string nameCol)
-        {
-            //aqui cargamos el documento con XDocument
-            XDocument documento = XDocument.Load(ruta + "schema.xml");
-
-            //            desde nombre //en de donde //descendants el nombre de la etiqueta //selecciona cual
-            var esquema = from sche in documento.Descendants("Schema") select sche;  //ahora en esta variable tenemos todo el esquema
-            //obtenemos el valor almacenado en la etiqueta document del esquema, la primera o default porque siempre llegara una
-            string doctype = esquema.Elements("document").FirstOrDefault().Value;
-            //Console.WriteLine(doctype);
-            //obtenemos el valor almacenado en la etiqueta user del esquema
-            string userid = esquema.Elements("user").FirstOrDefault().Value;
-            //Console.WriteLine(userid);
-
-            var columnas = from colu in documento.Descendants("columns") select colu;  //ahora en esta variable tenemos todas las columas
-            //cada elemento dentro del esquema es un XElement, recorremos con foreach para obtener el documento
-
-            foreach (XElement elemento in columnas.Elements("column"))
-            {
-                if (nameCol == elemento.Element("from").Value)
-                {
-                    return elemento.Element("to").Value;
-                }
-            }
-            return null;
-
+            ShowData_Console();
         }
 
         public static void ReadXML()
         {
-            //aqui cargamos el documento con XDocument
-            XDocument documento = XDocument.Load(ruta + "schema.xml");
+            schema = new Schema(); 
 
-            //            desde nombre //en de donde //descendants el nombre de la etiqueta //selecciona cual
+            XDocument documento = XDocument.Load(ruta+"schema.xml");
+            // desde nombre //en de donde //descendants el nombre de la etiqueta //selecciona cual
             var esquema = from sche in documento.Descendants("Schema") select sche;  //ahora en esta variable tenemos todo el esquema
             //obtenemos el valor almacenado en la etiqueta document del esquema, la primera o default porque siempre llegara una
             string doctype = esquema.Elements("document").FirstOrDefault().Value;
-            Console.WriteLine(doctype);
             //obtenemos el valor almacenado en la etiqueta user del esquema
             string userid = esquema.Elements("user").FirstOrDefault().Value;
-            Console.WriteLine(userid);
+
+            // almacenar info del esquema recibido al objeto
+            schema.docType = doctype;
+            schema.userID = userid;
 
             var columnas = from colu in documento.Descendants("columns") select colu;  //ahora en esta variable tenemos todas las columas
+
             //cada elemento dentro del esquema es un XElement, recorremos con foreach para obtener el documento
-
-            foreach (XElement elemento in columnas.Elements("column"))
+            foreach (XElement col in columnas.Elements("column"))
             {
-                Console.WriteLine(elemento.Element("to").Value);
-
-                Console.WriteLine(elemento.Element("from").Value);
+                // almacenar en el obejo schema el nombre de las etiquetas from y to
+                schema.dataFROM.Add(col.Element("from").Value);
+                schema.dataTO.Add(col.Element("to").Value);
             }
+        }
+        
+        public static void ReadCSV()
+        {
+            list.Clear();
+
+            string documentoCSV = File.ReadAllText(ruta + "EjemploCSV.csv");
+
+            documentoCSV = documentoCSV.Replace('\n', '\r');
+            string[] rows = documentoCSV.Split(new char[] { '\r' },
+                StringSplitOptions.RemoveEmptyEntries);
+
+            string[] headers = rows[0].Split(",");
+
+            GetValidFields_CSV(headers);
+
+            // Mapear los datos a una lista de objetos
+            for (int i = 0 ; i < rows.Length; i++)
+            {
+                string[] data = rows[i].Split(",");
+
+                Object[] o = new Object[10];
+                foreach (var j in camposValidos)
+                {
+                    o[j] = data[j];
+                }
+
+                list.Add(o);
+            }
+
+            ShowData_Console();
+        }
+        
+        /// <summary>
+        /// Se encarga de recorrer cada columna del archivo Excel y almacenar la posicion de los
+        /// campos que si pertenezcan al esquema cargado.
+        /// </summary>
+        /// <param name="sl">obtiene informacion de las celdas del documento xlsx</param>
+        public static void GetValidFields_Excel (SLDocument sl)
+        {
+            camposValidos.Clear();
+
+            for (int i = 0; i < 10; i++)
+            {
+                // verifica que el campo del archivo CVS o XLSX se encuentre dentro del esquema.
+                if (schema.dataFROM.Contains(sl.GetCellValueAsString(1, i + 1)))
+                    camposValidos.Add(i);
+            }
+        }
+
+        public static void GetValidFields_CSV(string[] headers)
+        {
+            camposValidos.Clear();
+
+            for (int i = 0; i < 10; i++)
+            {
+                // verifica que el campo del archivo CVS o XLSX se encuentre dentro del esquema.
+                if (schema.dataFROM.Contains(headers[i]))
+                    camposValidos.Add(i);
+            }
+            Console.WriteLine("");
+        }
+
+        public static void ShowData_Console()
+        {
+            List<int> listSort = new List<int>();
+            // almacenar una lista con las posiciones de las columnas ordenadas como el esquema recibido
+            for (int j = 0; j < schema.dataTO.Count; j++)
+            {
+                foreach (var d in camposValidos)
+                {
+                    if (list[0][d].ToString() == schema.dataFROM[j])
+                    {
+                        list[0][d] = schema.dataTO[j];
+                        listSort.Add(d);
+                        break;
+                    }
+                }
+            }
+            // presentar contenido del archivo siguiendo el esquema
+            for (int x = 0; x < list.Count; x++)
+            {
+                for (int i = 0; i < camposValidos.Count; i++)
+                {
+                    if (!string.IsNullOrEmpty((string)list[x][listSort[i]]))
+                        Console.Write(list[x][listSort[i]] + ", ");
+                    else
+                        Console.Write(", ");
+                }
+                Console.WriteLine("");
+            }
+            Console.WriteLine("");
         }
     }
 }

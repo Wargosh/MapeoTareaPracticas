@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net5.0": {
-      "DocumentFormat.OpenXml/2.11.3": {
+      "DocumentFormat.OpenXml/2.12.0": {
         "type": "package",
         "dependencies": {
           "System.IO.Packaging": "4.7.0"
@@ -12,15 +12,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/DocumentFormat.OpenXml.dll": {}
-        }
-      },
-      "DocumentFormat.OpenXml.STW/2.5.5631": {
-        "type": "package",
-        "compile": {
-          "lib/net40/DocumentFormat.OpenXml.dll": {}
-        },
-        "runtime": {
-          "lib/net40/DocumentFormat.OpenXml.dll": {}
         }
       },
       "Microsoft.NETCore.Platforms/5.0.0": {
@@ -97,14 +88,14 @@
     }
   },
   "libraries": {
-    "DocumentFormat.OpenXml/2.11.3": {
-      "sha512": "dCugN386ka+LwcOHnxi4gUHbiDeIw0/GEYw1sXFhYiErGFbJpRpscRcn5b12dywUReFCOgGNJ/l16zG5udkC/A==",
+    "DocumentFormat.OpenXml/2.12.0": {
+      "sha512": "onlyG2QOveEZawacT7+dnqwcIfMmjUicb5AYsyOHKDhy9yDEYkNPsgJNDeOz3OKRf139sa+A9hBxTKovhgHR5w==",
       "type": "package",
-      "path": "documentformat.openxml/2.11.3",
+      "path": "documentformat.openxml/2.12.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "documentformat.openxml.2.11.3.nupkg.sha512",
+        "documentformat.openxml.2.12.0.nupkg.sha512",
         "documentformat.openxml.nuspec",
         "icon.png",
         "lib/net35/DocumentFormat.OpenXml.dll",
@@ -117,19 +108,6 @@
         "lib/netstandard1.3/DocumentFormat.OpenXml.xml",
         "lib/netstandard2.0/DocumentFormat.OpenXml.dll",
         "lib/netstandard2.0/DocumentFormat.OpenXml.xml"
-      ]
-    },
-    "DocumentFormat.OpenXml.STW/2.5.5631": {
-      "sha512": "XrtoeEB4lpCRbFe3uKhkKs65NCdnTLSw3k8jWfC2ty2M8dxahKKRb6r+voriIKZksM59gr8X4wmvASTZbQaccg==",
-      "type": "package",
-      "path": "documentformat.openxml.stw/2.5.5631",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "documentformat.openxml.stw.2.5.5631.nupkg.sha512",
-        "documentformat.openxml.stw.nuspec",
-        "lib/net40/DocumentFormat.OpenXml.dll",
-        "nuget.exe"
       ]
     },
     "Microsoft.NETCore.Platforms/5.0.0": {
@@ -264,7 +242,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "DocumentFormat.OpenXml.STW >= 2.5.5631",
+      "DocumentFormat.OpenXml >= 2.12.0",
       "SpreadsheetLight >= 3.5.0"
     ]
   },
@@ -307,9 +285,9 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
-          "DocumentFormat.OpenXml.STW": {
+          "DocumentFormat.OpenXml": {
             "target": "Package",
-            "version": "[2.5.5631, )"
+            "version": "[2.12.0, )"
           },
           "SpreadsheetLight": {
             "target": "Package",
@@ -337,14 +315,10 @@
   },
   "logs": [
     {
-      "code": "NU1701",
+      "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"DocumentFormat.OpenXml.STW 2.5.5631\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
-      "libraryId": "DocumentFormat.OpenXml.STW",
-      "targetGraphs": [
-        "net5.0"
-      ]
+      "message": "Problema al leer el archivo de caché C:\\Users\\joseg\\Desktop\\practicas\\MapeoPracticas\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
     }
   ]
 }
