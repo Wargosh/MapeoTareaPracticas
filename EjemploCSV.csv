@@ -1,5 +1,5 @@
-﻿id,cedula,name,lastName,country,phone,address,email,birthdate,postalCode
-1,0704881546,Pancho,Villa,Argentina,Aquisito nomas,pancho.villa@gmail.com,12/2/1998,4596752
-2,0701224589,Juan,Perez,Mexico,DF,juan.perez@gmail.com,2/8/1986,452875
-3,0704236658,Ricardo,Milos,chile,Av. Nose y nose cuanto,ricardo.milos@gmail.com	12/5/1978,1245698
-4,0115448763,Fausto,Colorado,Colombia,22245896,Por ahi,fausto.colorado@gmail.com
+﻿identificador,cédula,nombre,apellido,país,teléfono,address,correo,fecha_nacimiento,código postal
+1,0704881546,Pancho,Villa,Argentina,,Aquisito nomas,pancho.villa@gmail.com,12/2/1998,4596752
+2,0701224589,Juan,Perez,Mexico,,DF,juan.perez@gmail.com,2/8/1986,452875
+3,0704236658,Ricardo,Milos,chile,,Av. Nose y nose cuanto,ricardo.milos@gmail.com,12/5/1978,1245698
+4,0115448763,Fausto,Colorado,Colombia,22245896,Por ahi,fausto.colorado@gmail.com,10/4/2008,456798
