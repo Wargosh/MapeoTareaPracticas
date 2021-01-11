@@ -3,45 +3,45 @@
    <document>csv</document>
    <user>101010</user>
    <columns>
-	<column>
-		<from>identificador</from> 
-		<to>id</to>
-	</column>
-	<column>
-		<from>nombre</from> 
-		<to>name</to>
-	</column>
-	<column>
-		<from>apellido</from> 
-		<to>Lastname</to>
-	</column>
-	<column>
-		<from>país</from> 
-		<to>country</to>
-	</column>
-	<column>
-		<from>teléfono</from> 
-		<to>phone</to>
-	</column>
-	<column>
-		<from>dirección</from> 
-		<to>address</to>
-	</column>
-	<column>
-		<from>correo</from>
-		<to>email</to>
-	</column>
-	<column>
-		<from>fecha</from> 
-		<to>date</to>
-	</column>
-	<column>
-		<from>cédula</from> 
-		<to>DNI</to>
-	</column>
-	<column>
-		<from>código postal</from> 
-		<to>postal code</to>
-	</column>
+		<column>
+			<from>identificador</from> 
+			<to>id</to>
+		</column>
+		<column>
+			<from>nombre</from> 
+			<to>name</to>
+		</column>
+		<column>
+			<from>apellido</from> 
+			<to>Lastname</to>
+		</column>
+		<column>
+			<from>país</from> 
+			<to>country</to>
+		</column>
+		<column>
+			<from>teléfono</from> 
+			<to>phone</to>
+		</column>
+		<column>
+			<from>dirección</from> 
+			<to>address</to>
+		</column>
+		<column>
+			<from>correo</from>
+			<to>email</to>
+		</column>
+		<column>
+			<from>fecha</from> 
+			<to>date</to>
+		</column>
+		<column>
+			<from>cédula</from> 
+			<to>DNI</to>
+		</column>
+		<column>
+			<from>código postal</from> 
+			<to>postal code</to>
+		</column>
    </columns>
 </Schema>

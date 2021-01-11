@@ -6,39 +6,29 @@ namespace MapeoTareaPracticas.Models
 {
     public class Objeto
     {
-        private string doctype;
+        private string Doctype { get; set; }
 
-        private string userid;
+        private string Userid { get; set; }
 
-        public string id { get; set; }
+        public string ID { get; set; }
 
-        private string name { get; set; }
+        private string Name { get; set; }
 
         private string Lastname { get; set; }
 
-        private string country { get; set; }
+        private string Country { get; set; }
 
-        private string phone { get; set; }
+        private string Phone { get; set; }
 
-        private string address { get; set; }
+        private string Address { get; set; }
 
-        private string email { get; set; }
+        private string Email { get; set; }
 
-        private string date { get; set; }
+        private string Date { get; set; }
 
-        private string dni { get; set; }
+        private string DNI { get; set; }
 
-        private string postalcode { get; set; }
-
-        public void SetDoctype(string doc)
-        {
-            this.doctype = doc;
-        }
-        
-        public string GetDoctype()
-        {
-            return this.doctype;
-        }
+        private string PostalCode { get; set; }
 
         public Objeto ()
         {
@@ -47,16 +37,16 @@ namespace MapeoTareaPracticas.Models
 
         public Objeto(string id, string name, string lastName, string country, string phone, string address, string email, string date, string dni, string postalcode)
         {
-            this.id = id;
-            this.name = name;
+            this.ID = id;
+            this.Name = name;
             this.Lastname = lastName;
-            this.country = country;
-            this.phone = phone;
-            this.address = address;
-            this.email = email;
-            this.date = date;
-            this.dni = dni;
-            this.postalcode = postalcode;
+            this.Country = country;
+            this.Phone = phone;
+            this.Address = address;
+            this.Email = email;
+            this.Date = date;
+            this.DNI = dni;
+            this.PostalCode = postalcode;
         }
     }
 }

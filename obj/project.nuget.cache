@@ -1,22 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "yMptiypz2UvJ5zJixdFUEL95koY1ZxkeIOWf8vv78NXWHGU1WOAE0GegVn8dLHCSGxOGbERiEpsGBxtbmJ5J+A==",
+  "dgSpecHash": "Mwj6AB+wcoUa0Df7hn+JdQEcACOrl8XV8bEjgkokrgj6Ti11CxAWh3TwroIWYi1Bd6sXcoSdvoTLBv/+7ZyrAA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\joseg\\Desktop\\practicas\\MapeoPracticas\\MapeoTareaPracticas.csproj",
+  "projectFilePath": "D:\\Respaldo\\ASP.NET\\PracticasDesarrollo\\MapeoTareaPracticas\\MapeoTareaPracticas.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\joseg\\.nuget\\packages\\documentformat.openxml\\2.12.0\\documentformat.openxml.2.12.0.nupkg.sha512",
-    "C:\\Users\\joseg\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
-    "C:\\Users\\joseg\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
-    "C:\\Users\\joseg\\.nuget\\packages\\spreadsheetlight\\3.5.0\\spreadsheetlight.3.5.0.nupkg.sha512",
-    "C:\\Users\\joseg\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512",
-    "C:\\Users\\joseg\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512"
+    "C:\\Users\\MSI-\\.nuget\\packages\\documentformat.openxml\\2.12.0\\documentformat.openxml.2.12.0.nupkg.sha512",
+    "C:\\Users\\MSI-\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\MSI-\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\MSI-\\.nuget\\packages\\spreadsheetlight\\3.5.0\\spreadsheetlight.3.5.0.nupkg.sha512",
+    "C:\\Users\\MSI-\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512",
+    "C:\\Users\\MSI-\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché C:\\Users\\joseg\\Desktop\\practicas\\MapeoPracticas\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
